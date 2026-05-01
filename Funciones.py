@@ -12,10 +12,6 @@ def guardar(servicios):
         json.dump(servicios, f, indent=4)
 
 
-
-def menu():
-servicios = cargar()
-
 def mostrar(servicios):
     if not servicios:
         print("No hay servicios registrados")
@@ -64,3 +60,22 @@ def editar(servicios):
     return
 
     print("-Servicio no encontrado-")
+
+
+def eliminar(servicios):
+    nombre = input("Nombre del servicio a eliminar: ")
+
+    for s in servicios:
+        if s["nombre"] == nombre:
+            servicios.remove(s)
+            guardar(servicios)
+            print("Servicio eliminado")
+            return
+
+    print("-Servicio no encontrado-")
+
+        # ------------------------------
+        # Menú principal
+        # ------------------------------
+def menu():
+    servicios = cargar()

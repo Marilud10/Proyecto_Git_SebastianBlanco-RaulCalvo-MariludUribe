@@ -26,6 +26,6 @@ while True:
         print("...Estas Saliendo del sistema...")
     break
 else:
-print("Opción inválida")
+    print("Opción inválida")
 
 menu()
