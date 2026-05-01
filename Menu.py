@@ -1,3 +1,20 @@
+import json
+
+ARCHIVO = "servicios.json"
+
+def cargar():
+    try:
+    with open(ARCHIVO, "r") as f:
+    return json.load(f)
+    except:
+    return []
+
+def guardar(servicios):
+with open(ARCHIVO, "w") as f:
+json.dump(servicios, f, indent=4)
+
+
+
 def menu():
 servicios = cargar()
 
