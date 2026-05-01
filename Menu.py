@@ -1,22 +1,6 @@
 import json
+import Funciones
 
-ARCHIVO = "servicios.json"
-
-def cargar():
-    try:
-    with open(ARCHIVO, "r") as f:
-    return json.load(f)
-    except:
-    return []
-
-def guardar(servicios):
-with open(ARCHIVO, "w") as f:
-json.dump(servicios, f, indent=4)
-
-
-
-def menu():
-servicios = cargar()
 
 while True:
     print("---------------------------------------")
@@ -31,13 +15,13 @@ while True:
     op = input("Seleccione una opción: ")
 
     if op == "1":
-        mostrar(servicios)
+        Funciones.mostrar(servicios)
     elif op == "2":
-        agregar(servicios)
+        Funciones.nagregar(servicios)
     elif op == "3":
-        editar(servicios)
+        Funciones.editar(servicios)
     elif op == "4":
-        eliminar(servicios)
+        Funciones.eliminar(servicios)
     elif op == "5":
         print("...Estas Saliendo del sistema...")
     break

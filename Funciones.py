@@ -1,3 +1,21 @@
+ARCHIVO = "servicios.json"
+
+def cargar():
+    try:
+        with open(ARCHIVO, "r") as f:
+            return json.load(f)
+    except:
+        return []
+
+def guardar(servicios):
+    with open(ARCHIVO, "w") as f:
+        json.dump(servicios, f, indent=4)
+
+
+
+def menu():
+servicios = cargar()
+
 def mostrar(servicios):
     if not servicios:
         print("No hay servicios registrados")
@@ -28,3 +46,21 @@ def agregar(servicios):
     servicios.append(servicio)
     guardar(servicios)
     print("¡Servicio agregado!")
+
+def editar(servicios):
+    nombre = input("Nombre del servicio a editar: ")
+
+    for s in servicios:
+        if s["nombre"] == nombre:
+            print("\n✏️ Editando servicio")
+
+    s["nombre"] = input("Nuevo nombre: ")
+    s["precio"] = input("Nuevo precio: ")
+    s["tipo_evento"] = input("Nuevo tipo: ")
+    s["duracion"] = input("Nueva duración: ")
+
+    guardar(servicios)
+    print("¡Servicio actualizado!")
+    return
+
+    print("-Servicio no encontrado-")
